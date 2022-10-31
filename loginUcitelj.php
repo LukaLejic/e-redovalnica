@@ -1,11 +1,11 @@
 <?php
 if (isset($_SESSION["uporabnik"])) {
-    if($_SESSION["stopnja"] == 1){
+    if ($_SESSION["stopnja"] == 1) {
         header("location:ucenec.php");
-    }else if($_SESSION["stopnja"] == 3){
+    } else if ($_SESSION["stopnja"] == 3) {
         header("location:admin.php");
     }
-}else{
+} else {
     $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
     session_start();
 }
@@ -27,7 +27,7 @@ if (isset($_POST["login"])) {
             $id = $imeUcitelj['id_ucenca'];
 
             $_SESSION["stopnja"] = 2;
-            $_SESSION['username'] = $ime." ".$priimek;
+            $_SESSION['username'] = $ime . " " . $priimek;
             $_SESSION['id'] = $id;
 
             header("location:entry.php");
@@ -38,28 +38,28 @@ if (isset($_POST["login"])) {
 }
 ?>
 <!DOCTYPE html>
-<html>
-<head>
-</head>
+<html lang="en">
 <body>
 <br/><br/>
 <div class="container" style="width:500px;">
     <br/>
-        <h3 align="center">Prijava</h3>
-        <a href="index.php">Ucenec</a>
-        <a href="loginAdmin.php">Admni</a>
-        <br/>
-        <form method="post">
-            <label>Enter mail</label>
+    <h3>Prijava</h3>
+    <a href="index.php">Ucenec</a>
+    <a href="loginAdmin.php">Admni</a>
+    <br/>
+    <form method="post">
+        <label>Enter mail
             <input type="text" name="mail" class="form-control"/>
-            <br/>
-            <label>Enter Password</label>
+        </label>
+        <br/>
+        <label>Enter Password
             <input type="password" name="password" class="form-control"/>
-            <br/>
-            <input type="submit" name="login" value="Login" class="btn btn-info"/>
-            <br/>
-            <p align="center"><a href="index.php">Register</a></p>
-        </form>
+        </label>
+        <br/>
+        <input type="submit" name="login" value="Login" class="btn btn-info"/>
+        <br/>
+        <p><a href="index.php">Register</a></p>
+    </form>
 </div>
 </body>
 </html>

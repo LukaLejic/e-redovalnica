@@ -1,0 +1,20 @@
+if (isset($_POST["register"])) {
+    if (empty($_POST["mail"]) && empty($_POST["password"])) {
+        echo '<script>alert("Izpolnite vsa polja!")</script>';
+    } else {
+        $mail = mysqli_real_escape_string($connect, $_POST["mail"]);
+        $password = mysqli_real_escape_string($connect, $_POST["password"]);
+        $ime = mysqli_real_escape_string($connect, $_POST["ime"]);
+        $priimek = mysqli_real_escape_string($connect, $_POST["priimek"]);
+        $razred = mysqli_real_escape_string($connect, $_POST["razred"]);
+        if (mysqli_num_rows(mysqli_query($connect, "SELECT mail FROM ucenec WHERE mail ='$mail'")) > 0) {
+            echo '<script>alert("Ta mail je že bil uporabljen!")</script>';
+        } else {
+            $query = "INSERT INTO ucenec (mail, password, ime, priimek, razred ) VALUES('$mail', '$password', '$ime', '$priimek','$razred')";
+            if (mysqli_query($connect, $query)) {
+                echo '<script>alert("Registration Done")</script>';
+            }
+        }
+    }
+}
+to je za registracijo

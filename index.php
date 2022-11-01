@@ -66,7 +66,7 @@ if (isset($_POST["login"])) {
     <?php
     if (isset($_GET["action"])) {
         ?>
-        <h3 align="center">Prijava</h3>
+        <h3>Prijava</h3>
         <a href="loginUcitelj.php">Učitelj</a>
         <a href="loginAdmin.php">Admni</a>
         <br/>
@@ -79,12 +79,12 @@ if (isset($_POST["login"])) {
             <br/>
             <input type="submit" name="login" value="Login" class="btn btn-info"/>
             <br/>
-            <p align="center"><a href="index.php">Register</a></p>
+            <p><a href="index.php">Register</a></p>
         </form>
         <?php
     } else {
         ?>
-        <h3     align="center">Registracija</h3>
+        <h3>Registracija</h3>
         <br/>
         <form method="post">
             <label>Ime</label>

@@ -44,9 +44,9 @@ if (isset($_POST["login"])) {
 <br/><br/>
 <div class="container" style="width:500px;">
     <br/>
-        <h3 align="center">Prijava</h3>
+        <h3>Prijava</h3>
         <a href="loginUcitelj.php">Učitelj</a>
-        <a href="index.php">Ucenec</a>
+        <a href="index.php?action=login">Ucenec</a>
         <br/>
         <form method="post">
             <label>Enter mail</label>
@@ -57,7 +57,7 @@ if (isset($_POST["login"])) {
             <br/>
             <input type="submit" name="login" value="Login" class="btn btn-info"/>
             <br/>
-            <p align="center"><a href="index.php">Register</a></p>
+            <p><a href="index.php">Register</a></p>
         </form>
 </div>
 </body>

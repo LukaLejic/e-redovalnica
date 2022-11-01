@@ -44,7 +44,7 @@ if (isset($_POST["login"])) {
 <div class="container" style="width:500px;">
     <br/>
     <h3>Prijava</h3>
-    <a href="index.php">Ucenec</a>
+    <a href="index.php?action=login">Ucenec</a>
     <a href="loginAdmin.php">Admni</a>
     <br/>
     <form method="post">

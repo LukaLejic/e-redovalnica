@@ -8,6 +8,7 @@ if (isset($_SESSION["uporabnik"])) {
 }else{
     $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
     session_start();
+    $_SESSION['connect'] = $connect;
 }
 if (isset($_POST["register"])) {
     if (empty($_POST["mail"]) && empty($_POST["password"])) {
@@ -48,7 +49,7 @@ if (isset($_POST["login"])) {
                 $_SESSION['username'] = $ime." ".$priimek;
                 $_SESSION['id'] = $id;
 
-            header("location:entry.php");
+            header("location:ucenec.php");
         } else {
             echo '<script>alert("Wrong User Details")</script>';
         }

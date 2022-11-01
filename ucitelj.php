@@ -5,10 +5,10 @@ if(!isset($_SESSION["username"]))
 {
     echo($_SESSION["username"]);
     header("location:index.php?action=login");
-    if($_SESSION['id'] == 1){
+    if($_SESSION['stopnja'] == 1){
         header("location:ucenec.php");
     }
-    else if($_SESSION['id'] == 3){
+    else if($_SESSION['stopnja'] == 3){
         header("location:admin.php");
     }
 }

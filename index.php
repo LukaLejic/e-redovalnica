@@ -65,7 +65,7 @@ if (isset($_POST["login"])) {
 <div class="container" style="width:500px;">
     <br/>
     <?php
-    if (isset($_GET["action"])) {
+    if (isset($_GET["action"])=='login') {
         ?>
         <h3>Prijava</h3>
         <a href="loginUcitelj.php">Učitelj</a>
@@ -117,7 +117,7 @@ if (isset($_POST["login"])) {
             <br/>
             <input type="submit" name="register" value="Register" class="btn btn-info"/>
             <br/>
-            <p align="center"><a href="index.php?action">Login</a></p>
+            <p align="center"><a href="index.php?action=login">Login</a></p>
         </form>
         <?php
     }

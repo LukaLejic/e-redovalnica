@@ -5,14 +5,14 @@ if(!isset($_SESSION["username"]))
 {
     echo($_SESSION["username"]);
     header("location:index.php?action=login");
-    if($_SESSION['stopnja'] == 2){
-        header("location:ucitelj.php");
-    }
-    else if($_SESSION['stopnja'] == 1){
-        header("location:ucenec.php");
-    }
-}
 
+}
+if($_SESSION['stopnja'] == 2){
+    header("location:ucitelj.php");
+}
+else if($_SESSION['stopnja'] == 1){
+    header("location:ucenec.php");
+}
 ?>
 <!doctype html>
 <html lang="en">

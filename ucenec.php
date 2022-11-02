@@ -22,23 +22,27 @@ $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle"
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Predmeti</title>
+    <link rel="stylesheet" href="tabela.css"/>
 </head>
 <body>
 
 <?php
-echo "</table>";
+
 $id = $_SESSION['id'];
 
 $result = mysqli_query($connect,"SELECT razred FROM ucenec WHERE id_ucenca = $id");
 $result = mysqli_fetch_assoc($result);
 $result = $result['razred'];
-
+echo '<table class="table">';
+echo "<thead><tr><th>Naloge predmeta - $result</th></tr><thead>";
+echo "<tbody>";
 $result1 = mysqli_query($connect,"SELECT kratica_predmeta FROM predmet WHERE razred = '$result'");
 while ($row = $result1->fetch_assoc()){
-    echo'<a href="ucenecPredmeti.php?predmet='.$row['kratica_predmeta'].'">'.$row['kratica_predmeta'].'</a><br/>';
+    echo'<tr><th><a href="ucenecPredmeti.php?predmet='.$row['kratica_predmeta'].'">'.$row['kratica_predmeta'].'</a></th></tr>';
 
-}
+}echo "</tbody>";
+echo '</table>';
 ?>
 </body>
 </html>

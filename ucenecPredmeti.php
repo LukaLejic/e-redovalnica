@@ -27,18 +27,27 @@ $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="tabela.css"/>
 </head>
 <body>
+
 <?php
-
-$result = mysqli_query($connect, "SELECT prikazan_naslov FROM naloga WHERE predmet = '$predmet'");
-
+echo "<table class='table'>";
+$result = mysqli_query($connect, "SELECT prikazan_naslov,id_naloge FROM naloga WHERE predmet = '$predmet'");
+echo "<thead><tr><th>Naloge predmeta - $predmet</th></tr><thead>";
+echo "<tbody>";
 while ($row = $result->fetch_assoc()){
-    echo'<a href="ucenecNaloge.php?predmet='.$predmet.'&naloga='.$row['prikazan_naslov'].'">'.$row['prikazan_naslov'].'</a><br/>';
+
+
+    echo"<tr>";
+    echo"<th><a href='ucenecNaloge.php?predmet=".$predmet."&naloga=".$row["id_naloge"]."'>".$row['prikazan_naslov'].'</a></th>';
+    echo"</tr>";
+
 
 }
+echo "</tbody>";
 ?>
-
+</table>
 
 
 </body>

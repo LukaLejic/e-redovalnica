@@ -2,13 +2,14 @@
 session_start();
 if (isset($_GET['predmet'])) {
     $predmet = $_GET['predmet'];
+    $_SESSION['predmet'] = $_GET['predmet'];
 
 } else {
     header("location:ucenec.php");
 }
 if (isset($_GET['naloga'])) {
     $naloga = $_GET['naloga'];
-    echo $naloga;
+    $_SESSION['naloga'] = $_GET['naloga'];
 } else {
     header("location:ucenecPredmeti.php?predmet='$predmet'");
 }
@@ -25,6 +26,7 @@ if ($_SESSION['stopnja'] == 2) {
 $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
 
 if (isset($_POST['submit'])) {
+
     $file = $_FILES['file'];
     $fileName = $_FILES['file']['name'];
     $fileTmpName = $_FILES['file']['tmp_name'];
@@ -34,13 +36,13 @@ if (isset($_POST['submit'])) {
     $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
 
-    $allowed = array('jpg', 'jpeg', 'png', 'pdf');
+    $allowed = array('jpg', 'jpeg', 'png', 'pdf', 'rtf', 'docx', 'zip', 'rar');
     if (in_array($fileActualExt, $allowed)) {
         if ($fileError === 0) {
             if ($fileSize < 50000) {
                 $fileNameNew = uniqid('', true) . "." . $fileActualExt;
                 $fileDestination = 'nalogeUcencev/' . $fileNameNew;
-                move_uploaded_file($fileTmpName, $fileDestination);
+
             } else {
                 echo "Your file is too big!";
             }
@@ -71,13 +73,33 @@ echo $result['navodilo'];
 echo $result['rok_oddaje'];
 
 ?>
-<form action="upload.php" method="POST" enctype="multipart/form-data" ›
-<label>
-    <input type="file" name="file" style="display:block">
-</label>
-<label>
-    <input type="submit" name="submit">
-</label></form>
+<form action="upload.php" method="POST" enctype="multipart/form-data">
+    <label>
+        <input type="file" name="file" style="display:block">
+    </label>
+    <label>
+        <input type="submit" name="submit">
+    </label></form>
+<table>
+
+
+    <?php
+    $id = $_SESSION['id'];
+    $query2 = "SELECT * FROM oddane_datoteke WHERE predmet = '$predmet' AND Id_dijaka";
+    $downloads = mysqli_query($connect, $query2);
+
+    while ($rows = mysqli_fetch_assoc($downloads)) {
+        ?>
+        <tr>
+            <td><a href="download.php?file=<?php echo $rows['filename'] ?>"><?php echo $rows['imeDatoteke'] ?></a><br></td>
+            <td><a href="delete.php?file=<?php echo $rows['filename'] ?>">Izbriši</a><br></td>
+        </tr>
+        <?php
+    }
+    ?>
+
+
+</table>
 
 </body>
 </html>

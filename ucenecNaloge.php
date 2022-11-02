@@ -1,5 +1,8 @@
 <?php
 session_start();
+$connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
+
+
 if (isset($_GET['predmet'])) {
     $predmet = $_GET['predmet'];
     $_SESSION['predmet'] = $_GET['predmet'];
@@ -18,16 +21,29 @@ if (!isset($_SESSION["username"])) {
     header("location:ucitelj.php");
 
 }
+$id = $_SESSION['id'];
+$zaklenjeno = mysqli_query($connect, "SELECT * FROM oddane_naloge WHERE  id_naloge = '$naloga' AND id_ucenca = '$id'");
+$zaklenjeno = mysqli_fetch_assoc($zaklenjeno);
+if (empty($zaklenjeno)) {
+    $zaklenjeno = false;
+} else {
+    $zaklenjeno = true;
+}
+if (isset($_POST['oddaj'])) {
+    unset($_POST);
+        mysqli_query($connect, "INSERT INTO oddane_naloge(id_naloge, id_ucenca) VALUES ('$naloga','$id')");
+
+
+
+}
+
 if ($_SESSION['stopnja'] == 2) {
     header("location:ucitelj.php");
 } else if ($_SESSION['stopnja'] == 3) {
     header("location:admin.php");
 }
-$connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
 
-if(isset($_POST['potrdi'])){
 
-}
 
 
 
@@ -79,24 +95,28 @@ echo $result['navodilo'];
 
     while ($rows = mysqli_fetch_assoc($downloads)) {
         ?>
-
         <tr>
             <th><a href="download.php?file=<?php echo $rows['filename'] ?>"><?php echo $rows['prikazanoIme'] ?></a></th>
+            <?php if(!$zaklenjeno){ ?>
             <th><a href="delete.php?file=<?php echo $rows['filename'] ?>">Izbriši</a></th>
+            <?php }else echo'<th></th>'
+            ?>
             <th><?php echo $rows['datumOddaje'] ?></th>
         </tr>
-
         <?php
     }
     echo "</tbody>";
     ?>
-    <form method="post">
-        <label>
-            <button type="submit" name="potrdi">Oddaj</button>
-        </label>
-    </form>
-
 </table>
+<?php
+if(!$zaklenjeno){
+    echo'<form method="post">
+        <label>
+            <input type="submit" name="oddaj" value="Oddaj">Oddaj</input>
+        </label>
+    </form>';
+}
+?>
 
 </body>
 </html>

@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
 
-    $allowed = array('jpg', 'jpeg', 'png', 'pdf', 'rtf', 'docx', 'zip', 'rar');
+    $allowed = array('jpg', 'jpeg', 'png', 'pdf', 'docx', 'zip', 'rar');
     if (in_array($fileActualExt, $allowed)) {
         if ($fileError === 0) {
             if ($fileSize < 50000) {
@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
                 $id_naloge = $_SESSION['naloga'];
                 $result = mysqli_query($connect, "SELECT ime,priimek FROM ucenec WHERE id_ucenca = '$id'");
                 $result = mysqli_fetch_assoc($result);
-                $fileNameNew = $result['priimek'] . $result['ime'] . "-" . $fileName;
+                $fileNameNew = $result['priimek'] . $result['ime'] .$id_naloge. "-" . $fileName;
                 $fileNameNew = preg_replace('/[č,š,ž,đ,č,ć,Č,Ć,Š,Ž,Đ]/', '', $fileNameNew);
                 $obstaja = mysqli_query($connect, "SELECT * FROM oddane_datoteke WHERE filename = '$fileNameNew'");
                 $fileDestination = 'nalogeUcencev/' . $fileNameNew;

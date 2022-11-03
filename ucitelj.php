@@ -1,8 +1,6 @@
 <?php
 session_start();
 if (!isset($_SESSION["username"])) {
-
-    echo($_SESSION["username"]);
     header("location:index.php?action=login");
 }
 if ($_SESSION['stopnja'] == 1) {
@@ -11,7 +9,8 @@ if ($_SESSION['stopnja'] == 1) {
     header("location:admin.php");
 }
 $id = $_SESSION['id'];
-$username = $_SESSION["id"];
+$username = $_SESSION['username'];
+
 
 $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
 
@@ -28,10 +27,10 @@ $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle"
 
 </head>
 <body>
-<table class="table""><?php
-echo "<tbody>";
+<table class="table"">
+<?php
 echo "<thead>";
-echo "<tr><th> Predmeti: </th>".$username."<th></th><th></th></tr>";
+echo "<tr><th> Predmeti: </th><th>".$username."</th></tr>";
 echo "</thead>";
 echo "<tbody>";
 
@@ -40,7 +39,7 @@ echo "<tbody>";
     while ($rows = $result->fetch_assoc()) {
         ?>
         <tr>
-        <th><a href="uciteljPredmeti.php.php?predmet=<?php echo $rows['kratica_predmeta'] ?>"><?php echo $rows['id_ucitelja'] ?></a></th>
+        <th><a href="uciteljPredmeti.php?predmet=<?php echo $rows['kratica_predmeta'] ?>"><?php echo $rows['kratica_predmeta'] ?></a></th><th></th>
         </tr>
         <?php
     }

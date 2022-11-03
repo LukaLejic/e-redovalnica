@@ -22,6 +22,7 @@ if (!isset($_SESSION["username"])) {
 
 }
 $id = $_SESSION['id'];
+
 $zaklenjeno = mysqli_query($connect, "SELECT * FROM oddane_naloge WHERE  id_naloge = '$naloga' AND id_ucenca = '$id'");
 $zaklenjeno = mysqli_fetch_assoc($zaklenjeno);
 if (empty($zaklenjeno)) {
@@ -29,23 +30,12 @@ if (empty($zaklenjeno)) {
 } else {
     $zaklenjeno = true;
 }
-if (isset($_POST['oddaj'])) {
-    unset($_POST);
-        mysqli_query($connect, "INSERT INTO oddane_naloge(id_naloge, id_ucenca) VALUES ('$naloga','$id')");
-
-
-
-}
 
 if ($_SESSION['stopnja'] == 2) {
     header("location:ucitelj.php");
 } else if ($_SESSION['stopnja'] == 3) {
     header("location:admin.php");
 }
-
-
-
-
 
 ?>
 <!doctype html>
@@ -64,9 +54,10 @@ if ($_SESSION['stopnja'] == 2) {
 $result = mysqli_query($connect, "SELECT * FROM naloga WHERE id_naloge = '$naloga'");
 $result = mysqli_fetch_assoc($result);
 echo $result['naslov'];
+
 echo $result['navodilo'];
 
-
+if(!$zaklenjeno){
 ?>
 <form action="upload.php" method="POST" enctype="multipart/form-data">
     <label>
@@ -77,10 +68,13 @@ echo $result['navodilo'];
     </label>
 </form>
 
-<table class="table">
+
 
 
     <?php
+
+    }
+echo "<table class='table'>";
     $id = $_SESSION['id'];
     $query2 = "SELECT * FROM oddane_datoteke WHERE predmet = '$predmet' AND Id_dijaka = '$id' AND id_naloge = '$naloga'";
     $downloads = mysqli_query($connect, $query2);
@@ -109,12 +103,9 @@ echo $result['navodilo'];
     ?>
 </table>
 <?php
+
 if(!$zaklenjeno){
-    echo'<form method="post">
-        <label>
-            <input type="submit" name="oddaj" value="Oddaj">Oddaj</input>
-        </label>
-    </form>';
+    echo'<a href="oddaj.php?naloga='.$naloga.'">ODDAJ</a>';
 }
 ?>
 

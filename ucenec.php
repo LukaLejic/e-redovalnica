@@ -35,7 +35,7 @@ $result = mysqli_query($connect,"SELECT razred FROM ucenec WHERE id_ucenca = $id
 $result = mysqli_fetch_assoc($result);
 $result = $result['razred'];
 echo '<table class="table">';
-echo "<thead><tr><th>Naloge predmeta - $result</th></tr><thead>";
+echo "<thead><tr><th>Predmeti razreda - $result</th></tr><thead>";
 echo "<tbody>";
 $result1 = mysqli_query($connect,"SELECT kratica_predmeta FROM predmet WHERE razred = '$result'");
 while ($row = $result1->fetch_assoc()){

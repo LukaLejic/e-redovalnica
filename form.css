@@ -1,0 +1,183 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+
+}
+*{
+    text-decoration: none;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+    background-color: gray;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(slike/scc-naslovna-1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media (min-width: 1000px) {
+    .card {
+        width: 350px;
+        height: 500px;
+        padding: 15px;
+        box-shadow: 0 0 40px 20px rgba(0, 0, 0, 0.26);
+        background-color: #009879;
+        margin: auto;
+        border-radius: 20px;
+    }
+}
+
+@media (max-width: 1000px) and (min-width: 400px) {
+    .card {
+        width: 100%;
+        height: 60%;
+        padding: 15px;
+        box-shadow: 0 0 40px 20px rgba(0, 0, 0, 0.26);
+        background-color: rgba(50, 107, 168, 0.5);
+        /* margin-left: 20%;
+            margin-right: 20%; */
+        margin: 20%;
+    }
+}
+
+@media (max-width: 400px) {
+    .card {
+        width: 100%;
+        height: 40%;
+        padding: 15px;
+        box-shadow: 0 0 40px 20px rgba(0, 0, 0, 0.26);
+        background-color: rgba(50, 107, 168, 0.5);
+        /* margin-left: 20%;
+            margin-right: 20%; */
+        margin: 10%;
+    }
+}
+
+.notri-box {
+    position: relative;
+    width: 100%;
+    height: 100%
+}
+
+.card-spredaj {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    padding: 55px;
+    box-sizing: border-box;
+    backface-visibility: hidden;
+}
+
+.card h2 {
+    font-weight: normal;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.input-box {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #fff;
+    margin: 6px 0;
+    height: 40px;
+    border-radius: 20px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    outline: none;
+    text-align: center;
+    color: #fff;
+}
+
+::placeholder {
+    color: #fff;
+    font-size: 12px;
+}
+
+button {
+    width: 100%;
+    background: white;
+    border: 1px solid #fff;
+    margin: 6px 0;
+    height: 40px;
+    border-radius: 20px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    outline: none;
+    text-align: center;
+    color: black;
+}
+
+.submit-btn {
+    position: relative;
+}
+
+.submit-btn::after {
+    content: '\27a4';
+    color: #333;
+    line-height: 32px;
+    font-size: 17px;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    right: -1px;
+    top: -1px;
+}
+
+.reg {
+    text-align: center;
+}
+
+select {
+    width: 100%;
+    background: white;
+    border: 1px solid #fff;
+    margin: 6px 0;
+    height: 40px;
+    border-radius: 20px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    outline: none;
+    text-align: center;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.select {
+    position: relative;
+    display: block;
+    width: 15em;
+    height: 2em;
+    line-height: 3;
+    overflow: hidden;
+    border-radius: .25em;
+    padding-bottom: 10px;
+}
+
+.btn {
+    width: 100%;
+    background: white;
+    border: 1px solid #fff;
+    margin: 6px 0;
+    height: 40px;
+    border-radius: 20px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    outline: none;
+    text-align: center;
+    color: black;
+}

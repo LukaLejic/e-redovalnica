@@ -29,7 +29,7 @@ if (isset($_POST["login"])) {
             $_SESSION['username'] = $ime." ".$priimek;
             $_SESSION['id'] = $id;
 
-            header("location:entry.php");
+            header("location:admin/admin.php");
         } else {
             echo '<script>alert("Wrong User Details")</script>';
         }

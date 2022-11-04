@@ -33,7 +33,7 @@
             </ul>
         </div>
         <div class="footer-spodaj">
-            <p>e-redovalnica d.o.o 2022 © <span>Tilen König</span></p>
+            <p>e-redovalnica d.o.o 2022 © <span>Tilen König, Urban Levičar</span></p>
         </div>
 
     </footer>

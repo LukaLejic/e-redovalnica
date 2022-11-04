@@ -1,6 +1,8 @@
 <?php
 //entry.php
 session_start();
+$connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
+
 if(!isset($_SESSION["username"]))
 {
     echo($_SESSION["username"]);
@@ -24,7 +26,6 @@ else if($_SESSION['stopnja'] == 1){
     <title>Document</title>
 </head>
 <body>
-
 
 </body>
 </html>

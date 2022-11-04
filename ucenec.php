@@ -37,7 +37,7 @@ $result = $result['razred'];
 echo '<table class="table">';
 echo "<thead><tr><th>Predmeti razreda - $result</th></tr><thead>";
 echo "<tbody>";
-$result1 = mysqli_query($connect,"SELECT kratica_predmeta FROM predmet WHERE razred = '$result'");
+$result1 = mysqli_query($connect, "SELECT kratica_predmeta FROM predmet WHERE razred = '$result'");
 while ($row = $result1->fetch_assoc()){
     echo'<tr><th><a href="ucenecPredmeti.php?predmet='.$row['kratica_predmeta'].'">'.$row['kratica_predmeta'].'</a></th></tr>';
 

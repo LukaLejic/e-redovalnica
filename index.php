@@ -59,66 +59,73 @@ if (isset($_POST["login"])) {
 <!DOCTYPE html>
 <html>
 <head>
+    <head> <link rel="stylesheet" href="form.css"</head>
 </head>
 <body>
-<br/><br/>
-<div class="container" style="width:500px;">
-    <br/>
+
     <?php
     if (isset($_GET["action"])=='login') {
         ?>
-        <h3>Prijava</h3>
-        <a href="loginUcitelj.php">Učitelj</a>
-        <a href="loginAdmin.php">Admni</a>
-        <br/>
-        <form method="post">
-            <label>Enter mail</label>
-            <input type="text" name="mail" class="form-control"/>
-            <br/>
-            <label>Enter Password</label>
-            <input type="password" name="password" class="form-control"/>
-            <br/>
-            <input type="submit" name="login" value="Login" class="btn btn-info"/>
-            <br/>
-            <p><a href="index.php">Register</a></p>
+
+
+
+
+            <div class="container">
+                <div class="card">
+                    <div class="notri-box">
+                        <div class="card-spredaj">
+                            <h2>PRIJAVA//DIJAK</h2>
+                            <form action = "" method = "post">
+                                <input type="text" name="mail" class="input-box" placeholder="Elektronska pošta" required>
+                                <input type="password" name="password" class="input-box" placeholder="Geslo" required>
+                                <button type="submit" name="login" value="Login" class="submit-btn"> PRIJAVA </button>
+
+
+                            </form>
+                            <div class="reg">Nov uporabnik? <a href = "index.php">Registracija</a></div>
+                            <br>
+                            <div class="reg"><a href="loginUcitelj.php">Prijava za profesorje</a></div>
+                            <br>
+                            <div class="reg"><a href="loginAdmin.php"> Prijava za administratorja </a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
         <?php
     } else {
         ?>
-        <h3>Registracija</h3>
-        <br/>
-        <form method="post">
-            <label>Ime</label>
-            <input type="text" name="ime" class="form-control"/>
-            <br/>
-            <label>Priimek</label>
-            <input type="text" name="priimek" class="form-control"/>
-            <br/>
+    <div class="container">
+        <div class="card">
+            <div class="notri-box">
+                <div class="card-spredaj">
+                    <h2>REGISTRACIJA</h2>
+                    <form action = "" method = "post">
+                        <input type="text" name="ime" class="input-box" placeholder="Ime">
+                        <input type="text" name="priimek" class="input-box" placeholder="Priimek">
 
-            <div>
-                <label>Razed</label>
-                <select name="razred">
-                    <?php
-                    $razred = mysqli_query($connect, "SELECT kratica_razreda FROM razred");
-                    $razred1 = mysqli_fetch_assoc($razred);
-                    foreach ($razred1 as $item) {
-                        echo "<label>$item</label>";
-                        echo "<option value='$item'>$item</option>";
-                    }
-                    ?>
-                </select>
+                        <select name="razred" class="input-box">
+                            <?php
+                            $razred = mysqli_query($connect, "SELECT kratica_razreda FROM razred");
+                            while ($rows = mysqli_fetch_assoc($razred)) {
+                                echo "<label>".$rows['kratica_razreda']."</label>";
+                                echo "<option value=''>".$rows['kratica_razreda']."</option>";
+                            }
+                            ?>
+                        </select>
+                        <input type="email" name="mail" class="input-box" placeholder="E-mail">
+                        <input type="password" name="password" class="input-box" placeholder="Geslo" required>
+
+                        <button type = "submit" name= "register" class="submit-btn"> Submit </button>
+
+                    </form>
+                    <div class="reg">Ste že uporabnik? <a href = "index.php?action=login">Prijavite se</a></div>
+                </div>
             </div>
-            <br class="form-control"/>
-            <label>Mail</label>
-            <input type="email" name="mail" class="form-control"/>
-            <br/>
-            <label>Geslo</label>
-            <input type="password" name="password" class="form-control"/>
-            <br/>
-            <input type="submit" name="register" value="Register" class="btn btn-info"/>
-            <br/>
-            <p align="center"><a href="index.php?action=login">Login</a></p>
-        </form>
+        </div>
+
+
+
         <?php
     }
     ?>

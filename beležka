@@ -50,3 +50,30 @@ if (isset($_POST['submit'])) {
 }
 header("location:ucenecNaloge.php?predmet=".$_SESSION['predmet']."&naloga=".$_SESSION['naloga']);
 ?>
+
+
+        <form method="post">
+            <label>Enter mail</label>
+            <input type="text" name="mail" class="form-control"/>
+            <br/>
+            <label>Enter Password</label>
+            <input type="password" name="password" class="form-control"/>
+            <br/>
+            <input type="submit" name="login" value="Login" class="btn btn-info"/>
+            <br/>
+            <p><a href="index.php">Register</a></p>
+        </form>
+
+        <h3>Prijava</h3>
+                <a href="loginUcitelj.php">Učitelj</a>
+                <a href="loginAdmin.php">Admni</a>
+                <br/>
+                <form method="post">
+                    <label>Enter mail</label>
+                    <input type="text" name="mail" class="form-control"/>
+                    <br/>
+                    <label>Enter Password</label>
+                    <input type="password" name="password" class="form-control"/>
+                    <br/>
+                    <input type="submit" name="login" value="Login" class="btn btn-info"/>
+                    <br/>

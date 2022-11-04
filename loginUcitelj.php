@@ -38,27 +38,26 @@ if (isset($_POST["login"])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<head> <link rel="stylesheet" href="form.css"</head>
 <body>
-<br/><br/>
-<div class="container" style="width:500px;">
-    <br/>
-    <h3>Prijava</h3>
-    <a href="index.php?action=login">Ucenec</a>
-    <a href="loginAdmin.php">Admni</a>
-    <br/>
-    <form method="post">
-        <label>Enter mail
-            <input type="text" name="mail" class="form-control"/>
-        </label>
-        <br/>
-        <label>Enter Password
-            <input type="password" name="password" class="form-control"/>
-        </label>
-        <br/>
-        <input type="submit" name="login" value="Login" class="btn btn-info"/>
-        <br/>
-        <p><a href="index.php">Register</a></p>
-    </form>
+    <div class="container">
+        <div class="card">
+            <div class="notri-box">
+                <div class="card-spredaj">
+                    <h2>PRIJAVA//PROFESOR</h2>
+                    <form action = "" method = "post">
+                        <input type="text" name="mail" class="input-box" placeholder="Elektronska pošta" required>
+                        <input type="password" name="password" class="input-box" placeholder="Geslo" required>
+                        <button type="submit" name="login" value="Login" class="submit-btn"> PRIJAVA </button>
+
+
+                    </form>
+                    <div class="reg"><a href="index.php?action=login">Prijava za dijake</a></div>
+                    <br>
+                    <div class="reg"><a href="loginAdmin.php"> Prijava za administratorje </a> </div>
+                </div>
+            </div>
+        </div>
 </div>
 </body>
 </html>

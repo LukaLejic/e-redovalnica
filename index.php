@@ -123,9 +123,6 @@ if (isset($_POST["login"])) {
                 </div>
             </div>
         </div>
-
-
-
         <?php
     }
     ?>

@@ -49,8 +49,6 @@ if (isset($_POST["login"])) {
                         <input type="text" name="mail" class="input-box" placeholder="Elektronska pošta" required>
                         <input type="password" name="password" class="input-box" placeholder="Geslo" required>
                         <button type="submit" name="login" value="Login" class="submit-btn"> PRIJAVA </button>
-
-
                     </form>
                     <div class="reg"><a href="index.php?action=login">Prijava za dijake</a></div>
                     <br>

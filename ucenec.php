@@ -26,7 +26,7 @@ $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle"
     <link rel="stylesheet" href="tabela.css"/>
 </head>
 <body>
-
+<a href="logout.php">Odjava</a>
 <?php
 
 $id = $_SESSION['id'];

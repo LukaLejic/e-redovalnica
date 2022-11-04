@@ -30,7 +30,7 @@ $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle"
     <link rel="stylesheet" href="tabela.css"/>
 </head>
 <body>
-
+<a href="logout.php">Odjava</a>
 <?php
 echo "<table class='table'>";
 $result = mysqli_query($connect, "SELECT prikazan_naslov,id_naloge FROM naloga WHERE predmet = '$predmet'");

@@ -27,6 +27,7 @@ $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle"
 
 </head>
 <body>
+<a href="logout.php">Odjava</a>
 <table class="table"">
 <?php
 echo "<thead>";

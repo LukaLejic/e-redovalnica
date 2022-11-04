@@ -1,19 +1,18 @@
 <?php
 //entry.php
 session_start();
-if(!isset($_SESSION["username"]))
-{
+if (!isset($_SESSION["username"])) {
     echo($_SESSION["username"]);
     header("location:ucitelj.php");
-    if($_SESSION['stopnja'] == 2){
+    if ($_SESSION['stopnja'] == 2) {
         header("location:ucitelj.php");
-    }
-    else if($_SESSION['stopnja'] == 3){
+    } else if ($_SESSION['stopnja'] == 3) {
         header("location:admin.php");
     }
 }
-if(isset($_GET['predmet'])){
+if (isset($_GET['predmet'])) {
     $predmet = $_GET['predmet'];
+    $_SESSION['predmet'] = $_GET['predmet'];
 }
 $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
 
@@ -28,7 +27,8 @@ $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle"
     <title>Naloge</title>
     <link rel="stylesheet" href="tabela.css"/>
 </head>
-<body><?php
+<body>
+<a href="logout.php">Odjava</a><?php
 $result = mysqli_query($connect, "SELECT * FROM naloga WHERE predmet = '$predmet'");
 
 echo "<table class='table'>";
@@ -49,8 +49,6 @@ while ($rows = mysqli_fetch_assoc($result)) {
 echo "</tbody>";
 ?>
 </table>
-
-
 
 
 </body>

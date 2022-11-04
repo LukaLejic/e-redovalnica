@@ -51,13 +51,12 @@ if ($_SESSION['stopnja'] == 2) {
 </head>
 <body>
 <a href="logout.php">Odjava</a>
+
 <?php
 $result = mysqli_query($connect, "SELECT * FROM naloga WHERE id_naloge = '$naloga'");
 $result = mysqli_fetch_assoc($result);
-echo $result['naslov'];
-
-echo $result['navodilo'];
-
+echo"<div>".$result['naslov'] ."</div>";
+echo"<div>".$result['navodilo'] ."</div>";
 if(!$zaklenjeno){
 ?>
 <form action="upload.php" method="POST" enctype="multipart/form-data">

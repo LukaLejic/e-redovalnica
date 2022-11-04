@@ -28,7 +28,8 @@ $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle"
     <link rel="stylesheet" href="tabela.css"/>
 </head>
 <body>
-<a href="logout.php">Odjava</a><?php
+<a href="logout.php">Odjava</a>
+<a href="uciteljDodajNalogo.php">Dodaj predmet</a><?php
 $result = mysqli_query($connect, "SELECT * FROM naloga WHERE predmet = '$predmet'");
 
 echo "<table class='table'>";

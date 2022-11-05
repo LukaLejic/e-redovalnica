@@ -39,6 +39,7 @@ if (isset ($_POST ['uredi'])) {
 </head>
 <body>
 <a href="adminUcitelji.php">Nazaj</a>
+<a href="../logout.php">Odjava</a>
 <h1>
     Urejanje učitelja
 </h1>

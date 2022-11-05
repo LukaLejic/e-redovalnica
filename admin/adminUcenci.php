@@ -27,12 +27,12 @@ if ($_SESSION['stopnja'] == 2) {
 </head>
 <body>
 <a href="admin.php">Nazaj</a>
-
+<a href="../logout.php">Odjava</a>
 <?php
 $result = mysqli_query($connect, "SELECT * FROM ucenec");
 echo "<table class='table'>";
 echo "<thead>";
-echo "<tr><th> Ime in priimek: </th><th><a href='adminUcenecDodaj.php'>Dodaj</a></th></tr>";
+echo "<tr><th> Ime in priimek: </th><th></th><th><a href='adminUcenecDodaj.php'>Dodaj</a></th></tr>";
 echo "</thead>";
 echo "<tbody>";
 while ($rows = mysqli_fetch_assoc($result)) {
@@ -42,9 +42,15 @@ while ($rows = mysqli_fetch_assoc($result)) {
             <?php echo $rows['ime']. ' ' .$rows['priimek']?>
         </th>
         <th>
+            <?php
+            echo $rows['mail'];
+            ?>
+        </th>
+        <th>
             <a href="adminUcenecIzbrisi.php?ucenec=<?php echo $rows['id_ucenca'] ?>">Izbriši</a>
             <a href="adminUcenecUredi.php?ucenec=<?php echo $rows['id_ucenca'] ?>">Uredi</a>
         </th>
+
     </tr>
     <?php
 }

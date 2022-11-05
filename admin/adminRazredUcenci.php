@@ -3,18 +3,19 @@
 session_start();
 $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
 
-if(!isset($_SESSION["username"]))
-{
+if (!isset($_SESSION["username"])) {
+
     header("location:../index.php?action=login");
 
 }
-if($_SESSION['stopnja'] == 2){
+if ($_SESSION['stopnja'] == 2) {
     header("location:../ucitelj.php");
-}
-else if($_SESSION['stopnja'] == 1){
+} else if ($_SESSION['stopnja'] == 1) {
     header("location:../ucenec.php");
 }
-
+if (isset($_GET['razred'])) {
+    $razred = $_GET['razred'];
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -28,26 +29,27 @@ else if($_SESSION['stopnja'] == 1){
 
 </head>
 <body>
-<a href="admin.php">Nazaj</a>
+<a href="adminRazred.php">Nazaj</a>
 <a href="../logout.php">Odjava</a>
 <?php
-$result = mysqli_query($connect, "SELECT * FROM ucitelj");
+$result = mysqli_query($connect, "SELECT * FROM ucenec WHERE razred = '$razred'");
 echo "<table class='table'>";
 echo "<thead>";
-echo "<tr><th> Ime in priimek: </th><th><a href='adminUciteljDodaj.php'>Dodaj</a></th></tr>";
+echo "<tr><th> Ime in priimek: </th><th></th></tr>";
 echo "</thead>";
 echo "<tbody>";
 while ($rows = mysqli_fetch_assoc($result)) {
     ?>
     <tr>
         <th>
-            <?php echo $rows['ime']. ' ' .$rows['priimek']?>
+            <?php
+            echo $rows['ime'].' '.$rows['priimek'];
+            ?>
         </th>
         <th>
-            <a style href="adminUciteljIzbrisi.php?ucitelj=<?php echo $rows['id_ucitelja'] ?>">Izbriši</a>
-            <a href="adminUciteljUredi.php?ucitelj=<?php echo $rows['id_ucitelja'] ?>">Uredi</a>
-            <a href="adminUciteljPredmeti.php?ucitelj=<?php echo $rows['id_ucitelja'] ?>">Predmeti</a>
-
+            <?php
+            echo $rows['mail'];
+            ?>
         </th>
     </tr>
     <?php

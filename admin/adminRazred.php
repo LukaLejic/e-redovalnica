@@ -26,25 +26,40 @@ if ($_SESSION['stopnja'] == 2) {
 
 </head>
 <body>
-<a href="admin.php">Nazaj</a>
 
+<a href="admin.php">Nazaj</a>
+<a href="../logout.php">Odjava</a>
 <?php
 $result = mysqli_query($connect, "SELECT * FROM razred");
 echo "<table class='table'>";
 echo "<thead>";
-echo "<tr><th> Ime in priimek: </th><th><a href='adminRazredDodaj.php'>Dodaj</a></th></tr>";
+echo "<tr><th> Ime in priimek: </th><th><a href='adminRazredDodaj.php'>Dodaj</a></th><th></th></tr>";
 echo "</thead>";
 echo "<tbody>";
 while ($rows = mysqli_fetch_assoc($result)) {
-
+    $razred = $rows['kratica_razreda'];
+    $result1 = mysqli_query($connect, "SELECT * FROM ucenec WHERE razred = '$razred'");
+    $result1 = mysqli_fetch_assoc($result1);
     ?>
     <tr>
         <th>
-            <?php echo $rows['kratica_razreda']?>
+            <?php echo $rows['kratica_razreda'] ?>
         </th>
-        <th>
-            <a href="adminUcenecIzbrisi.php?ucenec=<?php echo $rows['kratica_razreda'] ?>">Izbriši</a>
+        <th><?php
+            if (empty($result1)) {
+                ?>
+                <a href="adminRazredIzbrisi.php?razred=<?php echo $rows['kratica_razreda'] ?>">Izbriši</a>
+                <?php
+            } else {
+                ?>
+                <a href="adminRazredUcenci.php?razred=<?php echo $rows['kratica_razreda'] ?>">Ogled učencev</a>
+                <?php
+            }
+            ?>
         </th>
+    <th>
+        <a href="adminRazredPredmeti.php?razred=<?php echo $rows['kratica_razreda'] ?>">Ogled predmetov</a>
+    </th>
     </tr>
     <?php
 }

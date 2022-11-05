@@ -33,7 +33,8 @@ if (isset ($_POST ['dodaj'])) {
     <title>Document</title>
 </head>
 <body>
-<a href="adminUciteljPredmeti.php">Nazaj</a><br>
+<a href="adminUciteljPredmeti.php">Nazaj</a>
+<a href="../logout.php">Odjava</a><br>
 <h1>
     Dodaj predmet
 </h1>

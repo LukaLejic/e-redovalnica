@@ -34,9 +34,10 @@ if (isset($_GET['ucitelj'])){
 </head>
 <body>
 
-<a href="adminUcitelji.php">Nazaj</a><br>
+<a href="adminUcitelji.php">Nazaj</a>
+<a href="../logout.php">Odjava</a><br>
 <?php
-$result = mysqli_query($connect, "SELECT * FROM ucitelj");
+$result = mysqli_query($connect, "SELECT * FROM ucitelj WHERE id_ucitelja = '$ucitelj'");
 $result = mysqli_fetch_assoc($result);
 echo "<table class='table'>";
 echo "<thead>";

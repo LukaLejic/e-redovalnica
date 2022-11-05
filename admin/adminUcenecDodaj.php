@@ -37,7 +37,8 @@ if (isset ($_POST ['uredi'])) {
     <title>Document</title>
 </head>
 <body>
-<a href="adminUcenec.php">Nazaj</a><br>
+<a href="adminUcenci.php">Nazaj</a>
+<a href="../logout.php">Odjava</a><br>
 <h1>
     Dodaj učenca
 </h1>

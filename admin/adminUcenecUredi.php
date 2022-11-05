@@ -37,10 +37,12 @@ if (isset ($_POST ['uredi'])) {
     <title>Document</title>
 </head>
 <body>
+<a href="adminUcenci.php">Nazaj</a>
+<a href="../logout.php">Odjava</a>
 <h1>
     Urejanje učenca
 </h1>
-<form action="" method="post">
+<form method="post">
     <?php
     $result = mysqli_query($connect, "SELECT * FROM ucenec WHERE id_ucenca = '$ucenec'");
     $result = mysqli_fetch_assoc($result);

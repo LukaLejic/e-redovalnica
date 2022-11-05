@@ -27,7 +27,7 @@ if ($_SESSION['stopnja'] == 2) {
 </head>
 <body>
 <a href="admin.php">Nazaj</a>
-
+<a href="../logout.php">Odjava</a>
 <?php
 echo "<table class='table'>";
 echo "<thead>";

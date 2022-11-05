@@ -36,7 +36,9 @@ if (isset ($_POST ['dodaj'])) {
 </head>
 <body>
 <h1>
-    <a href="adminPredmeti.php">Nazaj</a><br>
+    <a href="adminPredmeti.php">Nazaj</a>
+    <a href="../logout.php">Odjava</a><br>
+
     Uredi predmet <?php echo $predmet ?>
 </h1>
 <form method="post">

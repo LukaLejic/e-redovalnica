@@ -33,9 +33,13 @@ if (isset ($_POST ['dodaj'])) {
     <title>Document</title>
 </head>
 <body>
+<a href="adminPredmeti.php">Nazaj</a>
+<a href="../logout.php">Odjava</a>
 <h1>
     Dodaj predmet
 </h1>
+
+
 <form method="post">
     <label>Ime predmeta</label>
     <input type="text" name="ime_predmeta"required/>

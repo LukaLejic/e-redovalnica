@@ -1,15 +1,13 @@
 <?php
 //entry.php
 session_start();
-if(!isset($_SESSION["username"]))
-{
+if (!isset($_SESSION["username"])) {
     header("location:../index.php?action=login");
 
 }
-if($_SESSION['stopnja'] == 2){
+if ($_SESSION['stopnja'] == 2) {
     header("location:../ucitelj.php");
-}
-else if($_SESSION['stopnja'] == 1){
+} else if ($_SESSION['stopnja'] == 1) {
     header("location:../ucenec.php");
 }
 $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
@@ -25,10 +23,11 @@ $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle"
     <title>Document</title>
 </head>
 <body>
-    <a href="adminPredmeti.php">Predmeti</a>
-    <a href="adminUcenci.php">Učenci</a>
-    <a href="adminUcitelji.php">Učitelj</a>
-    <a href="adminRazred.php">Razred</a>
+<a href="../logout.php">Odjava</a>
+<a href="adminPredmeti.php">Predmeti</a>
+<a href="adminUcenci.php">Učenci</a>
+<a href="adminUcitelji.php">Učitelj</a>
+<a href="adminRazred.php">Razred</a>
 
 </body>
 </html>

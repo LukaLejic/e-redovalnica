@@ -22,5 +22,5 @@ try {
 }catch (Exception $exception){
     echo '<script>alert("Napaka")</script>';
 }
-header("location:adminPredmeti.php");
+header("location:adminUcenci.php");
 ?>

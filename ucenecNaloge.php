@@ -87,29 +87,32 @@ echo "<tbody>";
 
 echo "<tr>
 <th>" . $result['rok_oddaje'] . "</th>";
-if ($result['rok_oddaje'] > $result1['datum_oddaje']) {
-    echo "<th style='background-color: rgba(146,255,143,0.4)'>" . $result1['datum_oddaje'] . "</th>";
-} else {
-    echo "<th style='background-color: rgba(255,124,124,0.4)'>" . $result1['datum_oddaje'] . "</th>";
+if (!empty($result1['datum_oddaje'])) {
+    if ($result['rok_oddaje'] > $result1['datum_oddaje']) {
+        echo "<th style='background-color: rgba(146,255,143,0.4)'>" . $result1['datum_oddaje'] . "</th>";
+    } else {
+        echo "<th style='background-color: rgba(255,124,124,0.4)'>" . $result1['datum_oddaje'] . "</th>";
+    }
+}else{
+   echo" <th></th>";
 }
-
 
 echo "<th></th></tr>";
 echo "<tr style='background-color: #009879; color: #ffffff;'><th>Oddane datoteke:</th><th></th><th></th></tr>";
-    while ($rows = mysqli_fetch_assoc($downloads)) {
-        ?>
-        <tr>
-            <th><a href="download.php?file=<?php echo $rows['filename'] ?>"><?php echo $rows['prikazanoIme'] ?></a></th>
-            <?php if (!$zaklenjeno) { ?>
-                <th><a href="delete.php?file=<?php echo $rows['filename'] ?>">Izbriši</a></th>
-            <?php } else echo '<th></th>'
-            ?>
-            <th><?php echo $rows['datumOddaje'] ?></th>
-        </tr>
-        <?php
-    }
-    echo "</tbody>";
+while ($rows = mysqli_fetch_assoc($downloads)) {
     ?>
+    <tr>
+        <th><a href="download.php?file=<?php echo $rows['filename'] ?>"><?php echo $rows['prikazanoIme'] ?></a></th>
+        <?php if (!$zaklenjeno) { ?>
+            <th><a href="delete.php?file=<?php echo $rows['filename'] ?>">Izbriši</a></th>
+        <?php } else echo '<th></th>'
+        ?>
+        <th><?php echo $rows['datumOddaje'] ?></th>
+    </tr>
+    <?php
+}
+echo "</tbody>";
+?>
 </table>
 <?php
 

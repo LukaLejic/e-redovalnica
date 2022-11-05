@@ -20,8 +20,8 @@ if (isset ($_POST ['uredi'])) {
     $password = mysqli_real_escape_string($connect, $_POST["password"]);
     $ime = mysqli_real_escape_string($connect, $_POST["ime"]);
     $priimek = mysqli_real_escape_string($connect, $_POST["priimek"]);
-    // TODO tu je treba za enkripcijo se zrihtat
-    mysqli_query($connect, "INSERT INTO ucenec(razred, ime, priimek, mail, password) VALUES ('razred','$ime','$priimek','$mail','$password')");
+
+    mysqli_query($connect, "INSERT INTO ucenec(razred, ime, priimek, mail, password) VALUES ('$razred','$ime','$priimek','$mail','$password')");
     header("location:adminUcenci.php");
 }
 ?>
@@ -53,7 +53,7 @@ if (isset ($_POST ['uredi'])) {
     $razred = mysqli_query($connect, "SELECT kratica_razreda FROM razred");
     while ($rows = mysqli_fetch_assoc($razred)) {
         echo "<label>" . $rows['kratica_razreda'] . "</label>";
-        echo "<option value=''>" . $rows['kratica_razreda'] . "</option>";
+        echo "<option value='". $rows['kratica_razreda'] ."'>" . $rows['kratica_razreda'] . "</option>";
     }
 
     echo"</select>";

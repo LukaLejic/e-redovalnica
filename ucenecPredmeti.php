@@ -30,6 +30,7 @@ $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle"
     <link rel="stylesheet" href="tabela.css"/>
 </head>
 <body>
+<a href="ucenec.php">Nazaj</a>
 <a href="logout.php">Odjava</a>
 <?php
 echo "<table class='table'>";
@@ -42,13 +43,33 @@ while ($row = $result->fetch_assoc()){
     echo"<tr>";
     echo"<th><a href='ucenecNaloge.php?predmet=".$predmet."&naloga=".$row["id_naloge"]."'>".$row['prikazan_naslov'].'</a></th>';
     echo"</tr>";
-
-
 }
 echo "</tbody>";
 ?>
 </table>
+</table>
+<?php
+$result1 = mysqli_query($connect, "SELECT * FROM gradivo WHERE predmet = '$predmet'");
 
+echo "<table class='table'>";
+echo "<thead>";
+
+echo "<tr>
+<th>Gradivo:</th></tr>";
+echo "</thead>";
+echo "<tbody>";
+while ($rows = mysqli_fetch_assoc($result1)) {
+    ?>
+    <tr>
+        <th><a href="downloadGradivo.php?file=<?php echo $rows['filename'] ?>"><?php echo $rows['filename'] ?></a></th>
+    </tr>
+
+
+    <?php
+}
+echo "</tbody>";
+?>
+</table>
 
 </body>
 </html>

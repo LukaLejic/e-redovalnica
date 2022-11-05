@@ -18,6 +18,9 @@ if (isset($_GET['naloga'])){
     $id_naloge = $_GET['naloga'];
     $_SESSION['naloga'] = $_GET['naloga'];
 }
+if (isset($_SESSION['naloga'])){
+    $id_naloge = $_SESSION['naloga'];
+}
 $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
 
 ?>
@@ -32,13 +35,15 @@ $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle"
     <link rel="stylesheet" href="tabela.css"/>
 
 </head>
-<body><?php
+<body>
+<a href="uciteljPredmeti.php">Nazaj</a>
+<?php
 
 echo "<table class='table'>";
 echo "<thead>";
 
 echo "<tr>
-        <th>Učenci:</th><th></th></tr>";
+        <th>Učenci:</th><th>Oddano:</th></tr>";
 echo "</thead>";
 echo "<tbody>";
 $result = mysqli_query($connect, "SELECT * FROM predmet WHERE kratica_predmeta = '$predmet'");
@@ -55,7 +60,7 @@ while ($rows = mysqli_fetch_assoc($result1)) {
         <th><?php if(!empty($result3)){
             echo'Oddano: '. $result3['datum_oddaje'];
         }else{
-
+                echo "Ni še oddano";
             } ?></th>
     </tr>
     <?php

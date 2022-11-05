@@ -36,7 +36,9 @@ if (isset($_SESSION['naloga'])){
     <link rel="stylesheet" href="tabela.css"/>
 
 </head>
-<body><?php
+<body>
+<a href="uciteljNaloge.php">Nazaj</a>
+<?php
 
 $result = mysqli_query($connect, "SELECT * FROM ucenec WHERE id_ucenca = '$id_ucenca'");
 $result = mysqli_fetch_assoc($result);

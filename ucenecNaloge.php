@@ -50,50 +50,59 @@ if ($_SESSION['stopnja'] == 2) {
 
 </head>
 <body>
+<a href="ucenecPredmeti.php">Nazaj</a>
 <a href="logout.php">Odjava</a>
 
 <?php
 $result = mysqli_query($connect, "SELECT * FROM naloga WHERE id_naloge = '$naloga'");
+$result1 = mysqli_query($connect, "SELECT * FROM oddane_naloge WHERE id_naloge = '$naloga' AND id_ucenca = '$id'");
 $result = mysqli_fetch_assoc($result);
-echo"<div>".$result['naslov'] ."</div>";
-echo"<div>".$result['navodilo'] ."</div>";
-if(!$zaklenjeno){
-?>
-<form action="upload.php" method="POST" enctype="multipart/form-data">
-    <label>
-        <input type="file" name="file" style="display:block">
-    </label>
-    <label>
-        <input type="submit" name="submit">
-    </label>
-</form>
-
-
+$result1 = mysqli_fetch_assoc($result1);
+echo "<div>" . $result['naslov'] . "</div>";
+echo "<div>" . $result['navodilo'] . "</div>";
+if (!$zaklenjeno) {
+    ?>
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <label>
+            <input type="file" name="file" style="display:block">
+        </label>
+        <label>
+            <input type="submit" name="submit">
+        </label>
+    </form>
 
 
     <?php
 
-    }
+}
 echo "<table class='table'>";
-    $id = $_SESSION['id'];
-    $query2 = "SELECT * FROM oddane_datoteke WHERE predmet = '$predmet' AND Id_dijaka = '$id' AND id_naloge = '$naloga'";
-    $downloads = mysqli_query($connect, $query2);
-    echo "<tbody>";
-    echo "<thead>";
-    echo "<tr><th> Rok oddaje: </th><th> Oddano: </th><th></th></tr>";
-    echo "</thead>";
+$id = $_SESSION['id'];
+$query2 = "SELECT * FROM oddane_datoteke WHERE predmet = '$predmet' AND Id_dijaka = '$id' AND id_naloge = '$naloga'";
+$downloads = mysqli_query($connect, $query2);
 
-    echo "<tr>
-<th>" . $result['rok_oddaje'] . "</th>
-<th></th></tr>";
+echo "<thead>";
+echo "<tr><th> Rok oddaje: </th><th> Oddano: </th><th></th></tr>";
+echo "</thead>";
+echo "<tbody>";
 
+echo "<tr>
+<th>" . $result['rok_oddaje'] . "</th>";
+if ($result['rok_oddaje'] > $result1['datum_oddaje']) {
+    echo "<th style='background-color: rgba(146,255,143,0.4)'>" . $result1['datum_oddaje'] . "</th>";
+} else {
+    echo "<th style='background-color: rgba(255,124,124,0.4)'>" . $result1['datum_oddaje'] . "</th>";
+}
+
+
+echo "<th></th></tr>";
+echo "<tr style='background-color: #009879; color: #ffffff;'><th>Oddane datoteke:</th><th></th><th></th></tr>";
     while ($rows = mysqli_fetch_assoc($downloads)) {
         ?>
         <tr>
             <th><a href="download.php?file=<?php echo $rows['filename'] ?>"><?php echo $rows['prikazanoIme'] ?></a></th>
-            <?php if(!$zaklenjeno){ ?>
-            <th><a href="delete.php?file=<?php echo $rows['filename'] ?>">Izbriši</a></th>
-            <?php }else echo'<th></th>'
+            <?php if (!$zaklenjeno) { ?>
+                <th><a href="delete.php?file=<?php echo $rows['filename'] ?>">Izbriši</a></th>
+            <?php } else echo '<th></th>'
             ?>
             <th><?php echo $rows['datumOddaje'] ?></th>
         </tr>
@@ -104,8 +113,8 @@ echo "<table class='table'>";
 </table>
 <?php
 
-if(!$zaklenjeno){
-    echo'<a href="oddaj.php?naloga='.$naloga.'">ODDAJ</a>';
+if (!$zaklenjeno) {
+    echo '<a href="oddaj.php?naloga=' . $naloga . '">ODDAJ</a>';
 }
 ?>
 

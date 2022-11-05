@@ -14,6 +14,9 @@ if (isset($_GET['predmet'])) {
     $predmet = $_GET['predmet'];
     $_SESSION['predmet'] = $_GET['predmet'];
 }
+if (isset($_SESSION['predmet'])) {
+    $predmet = $_SESSION['predmet'];
+}
 $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
 
 ?>
@@ -28,15 +31,16 @@ $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle"
     <link rel="stylesheet" href="tabela.css"/>
 </head>
 <body>
+<a href="ucitelj.php">Nazaj</a>
 <a href="logout.php">Odjava</a>
-<a href="uciteljDodajNalogo.php">Dodaj nalogo</a><?php
+<?php
 $result = mysqli_query($connect, "SELECT * FROM naloga WHERE predmet = '$predmet'");
 
 echo "<table class='table'>";
 echo "<thead>";
 
 echo "<tr>
-<th>Naloge:</th><th></th></tr>";
+<th>Naloge:</th><th><a href='uciteljDodajNalogo.php'>Dodaj nalogo</a></th></tr>";
 echo "</thead>";
 echo "<tbody>";
 while ($rows = mysqli_fetch_assoc($result)) {
@@ -50,7 +54,29 @@ while ($rows = mysqli_fetch_assoc($result)) {
 echo "</tbody>";
 ?>
 </table>
+<?php
+$result = mysqli_query($connect, "SELECT * FROM gradivo WHERE predmet = '$predmet'");
 
+echo "<table class='table'>";
+echo "<thead>";
+
+echo "<tr>
+<th>Gradivo:</th><th><a href='uciteljDodajGradivo.php'>Dodaj gradivo</a></th></tr>";
+echo "</thead>";
+echo "<tbody>";
+while ($rows = mysqli_fetch_assoc($result)) {
+    ?>
+    <tr>
+        <th><a href="downloadGradivo.php?file=<?php echo $rows['filename'] ?>"><?php echo $rows['filename'] ?></a></th>
+        <th><a href="deleteGradivo.php?file=<?php echo $rows['filename'] ?>">Izbriši</a></th>
+    </tr>
+
+
+    <?php
+}
+echo "</tbody>";
+?>
+</table>
 
 </body>
 </html>

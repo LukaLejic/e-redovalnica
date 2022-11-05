@@ -3,15 +3,14 @@
 session_start();
 if(!isset($_SESSION["username"]))
 {
-    echo($_SESSION["username"]);
-    header("location:index.php?action=login");
+    header("location:../index.php?action=login");
 
 }
 if($_SESSION['stopnja'] == 2){
-    header("location:ucitelj.php");
+    header("location:../ucitelj.php");
 }
 else if($_SESSION['stopnja'] == 1){
-    header("location:ucenec.php");
+    header("location:../ucenec.php");
 }
 $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
 

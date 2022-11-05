@@ -4,14 +4,14 @@ session_start();
 $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
 
 if (!isset($_SESSION["username"])) {
-    echo($_SESSION["username"]);
-    header("location:index.php?action=login");
+
+    header("location:../index.php?action=login");
 
 }
 if ($_SESSION['stopnja'] == 2) {
-    header("location:ucitelj.php");
+    header("location:../ucitelj.php");
 } else if ($_SESSION['stopnja'] == 1) {
-    header("location:ucenec.php");
+    header("location:../ucenec.php");
 }
 if (isset($_GET['predmet'])){
     $predmet = $_GET['predmet'];
@@ -36,6 +36,7 @@ if (isset ($_POST ['dodaj'])) {
 </head>
 <body>
 <h1>
+    <a href="adminPredmeti.php">Nazaj</a><br>
     Uredi predmet <?php echo $predmet ?>
 </h1>
 <form method="post">

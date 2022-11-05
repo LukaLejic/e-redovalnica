@@ -1,5 +1,4 @@
 <?php
-//entry.php
 session_start();
 if (!isset($_SESSION["username"])) {
 
@@ -12,15 +11,15 @@ if ($_SESSION['stopnja'] == 2) {
     header("location:../ucenec.php");
 }
 $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
-if (isset($_GET['ucenec'])){
-    $ucenec = $_GET['ucenec'];
-    $_SESSION['ucenec'] = $_GET['ucenec'];
+if (isset($_GET['ucitelj'])){
+    $ucitelj = $_GET['ucitelj'];
+
 }
 try {
-    mysqli_query($connect, "DELETE FROM ucenec WHERE id_ucenca = '$ucenec'");
+    mysqli_query($connect, "DELETE FROM ucitelj WHERE id_ucitelja = '$ucitelj'");
 
 }catch (Exception $exception){
     echo '<script>alert("Napaka")</script>';
 }
-header("location:adminPredmeti.php");
+header("location:adminUcitelji.php");
 ?>

@@ -4,14 +4,14 @@ session_start();
 $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
 
 if (!isset($_SESSION["username"])) {
-    echo($_SESSION["username"]);
-    header("location:index.php?action=login");
+
+    header("location:../index.php?action=login");
 
 }
 if ($_SESSION['stopnja'] == 2) {
-    header("location:ucitelj.php");
+    header("location:../ucitelj.php");
 } else if ($_SESSION['stopnja'] == 1) {
-    header("location:ucenec.php");
+    header("location:../ucenec.php");
 }
 ?>
 <!doctype html>
@@ -26,11 +26,13 @@ if ($_SESSION['stopnja'] == 2) {
 
 </head>
 <body>
+<a href="admin.php">Nazaj</a>
+
 <?php
 $result = mysqli_query($connect, "SELECT * FROM ucenec");
 echo "<table class='table'>";
 echo "<thead>";
-echo "<tr><th> Ime in priimek: </th><th></tr>";
+echo "<tr><th> Ime in priimek: </th><th><a href='adminUcenecDodaj.php'>Dodaj</a></th></tr>";
 echo "</thead>";
 echo "<tbody>";
 while ($rows = mysqli_fetch_assoc($result)) {

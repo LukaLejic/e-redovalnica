@@ -2,14 +2,14 @@
 //entry.php
 session_start();
 if (!isset($_SESSION["username"])) {
-    echo($_SESSION["username"]);
-    header("location:index.php?action=login");
+
+    header("location:../index.php?action=login");
 
 }
 if ($_SESSION['stopnja'] == 2) {
-    header("location:ucitelj.php");
+    header("location:../ucitelj.php");
 } else if ($_SESSION['stopnja'] == 1) {
-    header("location:ucenec.php");
+    header("location:../ucenec.php");
 }
 $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
 if (isset($_GET['predmet'])){
@@ -18,7 +18,8 @@ if (isset($_GET['predmet'])){
 }
 try {
     mysqli_query($connect, "DELETE FROM predmet WHERE kratica_predmeta = '$predmet'");
-
+    mysqli_query($connect, "DELETE FROM naloga WHERE predmet = '$predmet'");
+    mysqli_query($connect, "DELETE FROM ucitelj_predmet WHERE kratica_predmeta = '$predmet'");
 }catch (Exception $exception){
     echo '<script>alert("Predmet je v uporabi")</script>';
 }

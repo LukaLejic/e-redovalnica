@@ -14,7 +14,13 @@ if($_SESSION['stopnja'] == 2){
 else if($_SESSION['stopnja'] == 1){
     header("location:../ucenec.php");
 }
-
+if(isset($_SESSION['ucitelj'])){
+    $ucitelj = $_SESSION['ucitelj'];
+}
+if (isset($_GET['ucitelj'])){
+    $ucitelj = $_GET['ucitelj'];
+    $_SESSION['ucitelj'] = $_GET['ucitelj'];
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,30 +29,30 @@ else if($_SESSION['stopnja'] == 1){
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Učenci</title>
+    <title>Predmeti</title>
     <link rel="stylesheet" href="../tabela.css"/>
-
 </head>
 <body>
-<a href="admin.php">Nazaj</a>
 
+<a href="adminUcitelji.php">Nazaj</a><br>
 <?php
 $result = mysqli_query($connect, "SELECT * FROM ucitelj");
+$result = mysqli_fetch_assoc($result);
 echo "<table class='table'>";
 echo "<thead>";
-echo "<tr><th> Ime in priimek: </th><th><a href='adminUciteljDodaj.php'>Dodaj</a></th></tr>";
+echo "<tr><th> Predmeti katere uči ".$result['ime'] .' '.$result['priimek'].": </th><th><a href='adminUciteljPredmetiDodaj.php?ucitelj=". $ucitelj ."'>Dodaj</a>
+</th></tr>";
 echo "</thead>";
 echo "<tbody>";
-while ($rows = mysqli_fetch_assoc($result)) {
+$result1 = mysqli_query($connect, "SELECT * FROM ucitelj_predmet WHERE id_ucitelja = '$ucitelj'");
+while ($rows = mysqli_fetch_assoc($result1)) {
     ?>
     <tr>
         <th>
-            <?php echo $rows['ime']. ' ' .$rows['priimek']?>
+            <?php echo $rows['kratica_predmeta'] ?>
         </th>
         <th>
-            <a style href="adminUciteljIzbrisi.php?ucitelj=<?php echo $rows['id_ucitelja'] ?>">Izbriši</a>
-            <a href="adminUciteljUredi.php?ucitelj=<?php echo $rows['id_ucitelja'] ?>">Uredi</a>
-            <a href="adminUciteljPredmeti.php?ucitelj=<?php echo $rows['id_ucitelja'] ?>">Predmeti</a>
+            <a href="adminUciteljPredmetIzbrisi.php?predmet=<?php echo $rows['kratica_predmeta']?>">Odstani</a>
 
         </th>
     </tr>

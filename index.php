@@ -60,7 +60,8 @@ if (isset($_POST["login"])) {
 <html>
 <head>
     <head>
-        <link rel="stylesheet" href="form.css"
+        <link rel="stylesheet" href="form.css">
+
     </head>
 </head>
 <body>

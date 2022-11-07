@@ -1,5 +1,5 @@
 <?php
-//entry.php
+//entry.php kys nigger
 session_start();
 if (!isset($_SESSION["username"])) {
 

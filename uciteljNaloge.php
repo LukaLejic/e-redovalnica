@@ -33,10 +33,23 @@ $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle"
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Učenci</title>
     <link rel="stylesheet" href="tabela.css"/>
+    <link rel="stylesheet" href="header.css">
 
 </head>
 <body>
-<a href="uciteljPredmeti.php">Nazaj</a>
+<div class="kista">
+    <header>
+        <nav>
+            <label class="logo"> </label>
+            <a href="index.php"> <img class="logo" src="slike/logo1.jpg" alt="ne radi"> </a>
+            <label class="logotip"></label>
+            <ul>
+               <li><a href="uciteljPredmeti.php">Nazaj</a></li>
+            </ul>
+        </nav>
+    </header>
+</div>
+
 <?php
 
 echo "<table class='table'>";

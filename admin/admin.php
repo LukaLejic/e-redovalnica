@@ -21,13 +21,18 @@ $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="adminHeader.css">
 </head>
 <body>
-<a href="../logout.php">Odjava</a>
-<a href="adminPredmeti.php">Predmeti</a>
-<a href="adminUcenci.php">Učenci</a>
-<a href="adminUcitelji.php">Učitelj</a>
-<a href="adminRazred.php">Razred</a>
+ <div id="page-container">
+     <?php include "admin-header.php" ?>
+     <div id="page-content">
+         <div id="header">
+             Nadzorna plošča
+             <?php echo $_SESSION['username']; ?>
+         </div>
+     </div>
+ </div>
 
 </body>
 </html>

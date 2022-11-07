@@ -37,8 +37,22 @@ if (isset ($_POST ['uredi'])) {
     <title>Document</title>
 </head>
 <body>
-<a href="adminUcenci.php">Nazaj</a>
-<a href="../logout.php">Odjava</a><br>
+<link rel="stylesheet" href="../header.css">
+<link rel="stylesheet" href="../tabela.css">
+
+<div class="kista">
+    <header>
+        <nav>
+            <label class="logo"> </label>
+            <a href="../index.php"> <img class="logo" src="../slike/logo1.jpg" alt="ne radi"> </a>
+            <label class="logotip"></label>
+            <ul>
+                <li><a href="adminUcenci.php">NAZAJ</a></li>
+                <li><a href="../logout.php">ODJAVA</a></li>
+            </ul>
+        </nav>
+    </header>
+</div>
 <h1>
     Dodaj učenca
 </h1>
@@ -60,7 +74,7 @@ if (isset ($_POST ['uredi'])) {
     echo"<input type='email' name='mail' class='input-box' value='' placeholder='E-mail'>";
     echo"<input type='password' name='password' class='input-box' placeholder='Geslo' required>";
     ?>
-    <button type="submit" name="uredi" class="submit-btn">Spremeni</button>
+    <button type="submit" name="uredi" class="submit-btn">DODAJ</button>
 
 </form>
 </body>

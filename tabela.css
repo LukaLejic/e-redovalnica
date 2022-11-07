@@ -1,14 +1,16 @@
 *{
     text-decoration: none;
-font-size:30px;
+    font-size:30px;
 }
 table {
-    width: 100vw;
-
+    width: 90vw;
+    margin-left: 5vw !important;
+    margin-right: 5vw !important;
 }
 
 .table {
-
+    margin-left: 5vw !important;
+    margin-right: 5vw !important;
     display: block;
     overflow-x: auto;
     white-space: nowrap;
@@ -24,7 +26,7 @@ table {
 
 
 table tr {
-    width: 100vw;
+    width: 90vw;
 }
 
 .table thead tr {
@@ -36,7 +38,7 @@ table tr {
 .table th,
 .table td {
     padding: 12px 15px;
-    width: 100vw;
+    width: 90vw;
     text-align: left;
 }
 
@@ -65,3 +67,4 @@ table tr {
     font-weight: bold;
     color: #39aea9;
 }
+

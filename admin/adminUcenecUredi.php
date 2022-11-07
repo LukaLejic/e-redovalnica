@@ -35,10 +35,23 @@ if (isset ($_POST ['uredi'])) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="../tabela.css">
 </head>
 <body>
-<a href="adminUcenci.php">Nazaj</a>
-<a href="../logout.php">Odjava</a>
+<div class="kista">
+    <header>
+        <nav>
+            <label class="logo"> </label>
+            <a href="../index.php"> <img class="logo" src="../slike/logo1.jpg" alt="ne radi"> </a>
+            <label class="logotip"></label>
+            <ul>
+                <li><a href="adminUcenci.php">NAZAJ</a></li>
+                <li><a href="../logout.php">ODJAVA</a></li>
+            </ul>
+        </nav>
+    </header>
+</div>
 <h1>
     Urejanje učenca
 </h1>

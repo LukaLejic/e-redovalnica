@@ -29,8 +29,22 @@ if (isset($_GET['razred'])) {
 
 </head>
 <body>
-<a href="adminRazred.php">Nazaj</a>
-<a href="../logout.php">Odjava</a>
+<link rel="stylesheet" href="../header.css">
+
+
+<div class="kista">
+    <header>
+        <nav>
+            <label class="logo"> </label>
+            <a href="../index.php"> <img class="logo" src="../slike/logo1.jpg" alt="ne radi"> </a>
+            <label class="logotip"></label>
+            <ul>
+                <li><a href="adminRazred.php">NAZAJ</a></li>
+                <li><a href="../logout.php">ODJAVA</a></li>
+            </ul>
+        </nav>
+    </header>
+</div>
 <?php
 $result = mysqli_query($connect, "SELECT * FROM predmet WHERE razred = '$razred'");
 echo "<table class='table'>";

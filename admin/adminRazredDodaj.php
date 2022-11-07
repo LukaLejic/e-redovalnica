@@ -38,8 +38,22 @@ if (isset ($_POST ['uredi'])) {
     <title>Document</title>
 </head>
 <body>
-<a href="adminRazred.php">Nazaj</a>
-<a href="../logout.php">Odjava</a><br>
+<link rel="stylesheet" href="../header.css">
+<link rel="stylesheet" href="../tabela.css">
+
+<div class="kista">
+    <header>
+        <nav>
+            <label class="logo"> </label>
+            <a href="../index.php"> <img class="logo" src="../slike/logo1.jpg" alt="ne radi"> </a>
+            <label class="logotip"></label>
+            <ul>
+                <li><a href="admin.php">NAZAJ</a></li>
+                <li><a href="../logout.php">ODJAVA</a></li>
+            </ul>
+        </nav>
+    </header>
+</div>
 <h1>
     Dodaj razred
 </h1>

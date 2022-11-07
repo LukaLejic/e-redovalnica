@@ -30,9 +30,22 @@ $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle"
     <link rel="stylesheet" href="tabela.css"/>
 </head>
 <body>
-<a href="ucenec.php">Nazaj</a>
-<a href="logout.php">Odjava</a>
+<link rel="stylesheet" href="header.css">
+<div class="kista">
+    <header>
+        <nav>
+            <label class="logo"> </label>
+            <a href="index.php"> <img class="logo" src="slike/logo1.jpg" alt="ne radi"> </a>
+            <label class="logotip"></label>
+            <ul>
+                <li><a href="ucenec.php">NAZAJ</a></li>
+                <li><a href="logout.php">ODJAVA</a></li>
+            </ul>
+        </nav>
+    </header>
+</div>
 <?php
+
 echo "<table class='table'>";
 $result = mysqli_query($connect, "SELECT prikazan_naslov,id_naloge FROM naloga WHERE predmet = '$predmet'");
 echo "<thead><tr><th>Naloge predmeta - $predmet</th></tr><thead>";

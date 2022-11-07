@@ -31,11 +31,23 @@ if (isset($_GET['ucitelj'])){
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Predmeti</title>
     <link rel="stylesheet" href="../tabela.css"/>
+    <link rel="stylesheet" href="../header.css"/>
 </head>
 <body>
 
-<a href="adminUcitelji.php">Nazaj</a>
-<a href="../logout.php">Odjava</a><br>
+<div class="kista">
+    <header>
+        <nav>
+            <label class="logo"> </label>
+            <a href="../index.php"> <img class="logo" src="../slike/logo1.jpg" alt="ne radi"> </a>
+            <label class="logotip"></label>
+            <ul>
+                <li><a href="adminUcitelji.php">NAZAJ</a></li>
+                <li><a href="../logout.php">ODJAVA</a></li>
+            </ul>
+        </nav>
+    </header>
+</div>
 <?php
 $result = mysqli_query($connect, "SELECT * FROM ucitelj WHERE id_ucitelja = '$ucitelj'");
 $result = mysqli_fetch_assoc($result);

@@ -38,9 +38,22 @@ if (isset ($_POST ['dodaj'])) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="tabela.css">
 </head>
 <body>
+<div class="kista">
+    <header>
+        <nav>
+            <label class="logo"> </label>
+            <a href="index.php"> <img class="logo" src="slike/logo1.jpg" alt="ne radi"> </a>
+            <label class="logotip"></label>
+            <ul>
+                <li><a href="uciteljPredmeti.php">Nazaj</a></li>
+            </ul>
+        </nav>
+    </header>
+</div>
 <h1>Dodaj nalogo</h1>
 <form method="post">
     <div>

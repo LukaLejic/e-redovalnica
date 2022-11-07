@@ -24,10 +24,25 @@ $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle"
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Predmeti</title>
     <link rel="stylesheet" href="tabela.css"/>
+
 </head>
 <body>
-<a href="logout.php">Odjava</a>
+<link rel="stylesheet" href="header.css">
+<div class="kista">
+    <header>
+        <nav>
+            <label class="logo"> </label>
+            <a href="index.php"> <img class="logo" src="slike/logo1.jpg" alt="ne radi"> </a>
+            <label class="logotip"></label>
+            <ul>
+                <li><a href="logout.php">ODJAVA</a></li>
+            </ul>
+        </nav>
+    </header>
+</div>
+
 <?php
+
 
 $id = $_SESSION['id'];
 

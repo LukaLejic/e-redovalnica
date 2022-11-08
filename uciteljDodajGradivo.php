@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
 
-    $allowed = array('jpg', 'jpeg', 'png', 'pdf', 'docx', 'zip', 'rar');
+    $allowed = array('jpg', 'jpeg', 'png', 'pdf', 'docx', 'doc', 'zip', 'rar');
     if (in_array($fileActualExt, $allowed)) {
         if ($fileError === 0) {
             if ($fileSize < 50000) {

@@ -70,17 +70,14 @@ $result = mysqli_query($connect, "SELECT * FROM naloga WHERE id_naloge = '$nalog
 $result1 = mysqli_query($connect, "SELECT * FROM oddane_naloge WHERE id_naloge = '$naloga' AND id_ucenca = '$id'");
 $result = mysqli_fetch_assoc($result);
 $result1 = mysqli_fetch_assoc($result1);
-echo "<div>" . $result['naslov'] . "</div>";
-echo "<div>" . $result['navodilo'] . "</div>";
+echo "<h1 class='poravnava'>" . $result['naslov'] . "</h1>";
+echo "<h4 class='poravnava'>" . $result['navodilo'] . "</h4>";
 if (!$zaklenjeno) {
     ?>
-    <form action="upload.php" method="POST" enctype="multipart/form-data">
-        <label>
-            <input type="file" name="file" style="display:block">
-        </label>
-        <label>
-            <input type="submit" name="submit">
-        </label>
+    <form class='poravnava' action="upload.php" method="POST" enctype="multipart/form-data">
+        <label for="shrani"  class="submit-btn">Izberi datoteko</label>
+        <input class="submit-btn" id= "shrani" type="file" name="file" style="visibility:hidden"></br>
+            <input type="submit"  name="submit" value="Shrani" class="submit-btn" >
     </form>
 
 
@@ -129,7 +126,7 @@ echo "</tbody>";
 <?php
 
 if (!$zaklenjeno) {
-    echo '<a href="oddaj.php?naloga=' . $naloga . '">ODDAJ</a>';
+    echo '<a id="submit-btn" class="poravnava" href="oddaj.php?naloga=' . $naloga . '">ODDAJ</a>';
 }
 ?>
 

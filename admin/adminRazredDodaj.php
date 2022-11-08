@@ -63,7 +63,7 @@ if (isset ($_POST ['uredi'])) {
     echo "<input type='text' name='razred' class='input-box' value='' placeholder='Ime'>";
 
     ?>
-    <button type="submit" name="uredi" class="submit-btn">Spremeni</button>
+    <button type="submit" name="uredi" class="submit-btn">Dodaj</button>
 
 </form>
 </body>

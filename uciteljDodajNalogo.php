@@ -68,7 +68,7 @@ if (isset ($_POST ['dodaj'])) {
         <label>Rok oddaje</label>
         <input type="datetime-local" name="rok_oddaje" required/>
     </div>
-    <input type="submit" name="dodaj" value="Dodaj"/>
+    <input type="submit" name="dodaj" value="Dodaj" class="submit-btn"/>
 </form>
 
 </body>

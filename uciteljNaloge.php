@@ -14,11 +14,11 @@ if (isset($_SESSION['predmet'])) {
     $predmet = $_SESSION['predmet'];
 }
 
-if (isset($_GET['naloga'])){
+if (isset($_GET['naloga'])) {
     $id_naloge = $_GET['naloga'];
     $_SESSION['naloga'] = $_GET['naloga'];
 }
-if (isset($_SESSION['naloga'])){
+if (isset($_SESSION['naloga'])) {
     $id_naloge = $_SESSION['naloga'];
 }
 $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle");
@@ -44,7 +44,8 @@ $connect = mysqli_connect("localhost", "basicuser", "edD-AgA_FeFfqjOC", "moodle"
             <a href="index.php"> <img class="logo" src="slike/logo1.jpg" alt="ne radi"> </a>
             <label class="logotip"></label>
             <ul>
-               <li><a href="uciteljPredmeti.php">Nazaj</a></li>
+                <li><a href="uciteljPredmeti.php">Nazaj</a></li>
+                <li><a href="logout.php">ODJAVA</a></li>
             </ul>
         </nav>
     </header>
@@ -65,14 +66,16 @@ $result = $result['razred'];
 $result1 = mysqli_query($connect, "SELECT * FROM ucenec WHERE razred = '$result'");
 while ($rows = mysqli_fetch_assoc($result1)) {
     $id_ucenca = $rows['id_ucenca'];
-    $result3 = mysqli_query($connect,"SELECT * FROM oddane_naloge WHERE id_ucenca = '$id_ucenca' AND id_naloge = '$id_naloge'");
+    $result3 = mysqli_query($connect, "SELECT * FROM oddane_naloge WHERE id_ucenca = '$id_ucenca' AND id_naloge = '$id_naloge'");
     $result3 = mysqli_fetch_assoc($result3);
     ?>
     <tr>
-        <th><a href="uciteljUcenci.php?ucenec=<?php echo $rows['id_ucenca'] ?>"><?php echo $rows['ime'].' '.$rows['priimek'] ?></a></th>
-        <th><?php if(!empty($result3)){
-            echo'Oddano: '. $result3['datum_oddaje'];
-        }else{
+        <th>
+            <a href="uciteljUcenci.php?ucenec=<?php echo $rows['id_ucenca'] ?>"><?php echo $rows['ime'] . ' ' . $rows['priimek'] ?></a>
+        </th>
+        <th><?php if (!empty($result3)) {
+                echo 'Oddano: ' . $result3['datum_oddaje'];
+            } else {
                 echo "Ni še oddano";
             } ?></th>
     </tr>

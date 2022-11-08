@@ -46,7 +46,7 @@ if ($_SESSION['stopnja'] == 2) {
 $result = mysqli_query($connect, "SELECT * FROM ucenec");
 echo "<table class='table'>";
 echo "<thead>";
-echo "<tr><th> Ime in priimek: </th><th></th><th><a href='adminUcenecDodaj.php'>Dodaj</a></th></tr>";
+echo "<tr><th> Ime in priimek: </th><th></th><th></th><th><a href='adminUcenecDodaj.php'>Dodaj</a></th></tr>";
 echo "</thead>";
 echo "<tbody>";
 while ($rows = mysqli_fetch_assoc($result)) {
@@ -54,6 +54,11 @@ while ($rows = mysqli_fetch_assoc($result)) {
     <tr>
         <th>
             <?php echo $rows['ime']. ' ' .$rows['priimek']?>
+        </th>
+        <th>
+            <?php
+            echo $rows['razred'];
+            ?>
         </th>
         <th>
             <?php
